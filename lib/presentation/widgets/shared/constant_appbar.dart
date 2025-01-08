@@ -8,7 +8,7 @@ class ConstantAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
 
   Widget build(BuildContext context) {
-    final chatProvider = context.watch<UserProvider>();
+    final userProvider = context.watch<UserProvider>();
     final colors = Theme.of(context).colorScheme;
 
     return AppBar(
@@ -30,7 +30,7 @@ class ConstantAppbar extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.all(4.0),
             child: CircleAvatar(
               backgroundColor: colors.onPrimary,
-              backgroundImage: NetworkImage(chatProvider.globalUserData.imageUrl),
+              backgroundImage: NetworkImage(userProvider.globalUserData.imageUrl),
             ),
           ),
           

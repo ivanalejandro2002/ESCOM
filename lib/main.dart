@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/config/theme/app_theme.dart';
 import 'package:gestor/presentation/providers/user_provider.dart';
+import 'package:gestor/presentation/screens/login_page.dart';
 import 'package:gestor/presentation/screens/main_page.dart';
 import 'package:provider/provider.dart';
 
@@ -16,12 +17,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserProvider())
       ],
       child: MaterialApp(
-        title: 'Yes no App',
+        title: 'ESCOM',
       
         debugShowCheckedModeBanner: false,
         theme: AppTheme(selectedColor: 6).theme(),
       
-        home: MainPage()
+        home: LoginPage()
       ),
     );
   }
