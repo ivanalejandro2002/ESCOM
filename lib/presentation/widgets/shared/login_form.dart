@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/domain/entities/global_user.dart';
+import 'package:gestor/domain/entities/teachers.dart';
 import 'package:gestor/presentation/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -91,9 +92,11 @@ class LoginForm extends StatelessWidget {
                     imageUrl: 'https://static.wikia.nocookie.net/mamarre-estudios-espanol/images/5/54/CUVcOWP4.jpg/revision/latest/thumbnail/width/360/height/360?cb=20201009210428&path-prefix=es',
                     boleta: '123456',
                     curp: 'ABCDario',
+                    subjects: [
+                      AsignedTeacher(name: 'a', position: 'b', contact: 'c', deparment: 'd', group: 'e', subject: 'f')
+                    ]
                   );
 
-                  print(userProvider.globalUserData.curp);
 
                   onValue(random);
                 }
