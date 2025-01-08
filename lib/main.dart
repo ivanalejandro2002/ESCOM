@@ -3,6 +3,7 @@ import 'package:gestor/config/theme/app_theme.dart';
 import 'package:gestor/presentation/providers/user_provider.dart';
 import 'package:gestor/presentation/screens/login_page.dart';
 import 'package:gestor/presentation/screens/main_page.dart';
+import 'package:gestor/presentation/screens/my_professors_view.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme(selectedColor: 6).theme(),
       
-        home: LoginPage()
+        home: MyProfessorsView()
       ),
     );
   }
