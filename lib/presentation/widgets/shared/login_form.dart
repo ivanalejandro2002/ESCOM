@@ -87,13 +87,14 @@ class LoginForm extends StatelessWidget {
                   //Esta es una interacción de prueba, pero puede basarse para más facilidad
                   //El objeto de retorno de la base de datos debe convertirse en uno de tipo GlobalUser
 
+                  //Para las materias se construye con la clase Asigned Teacher convirtiendola en una lista
                   GlobalUser random = GlobalUser(
                     nombre: 'Panchito',
                     imageUrl: 'https://static.wikia.nocookie.net/mamarre-estudios-espanol/images/5/54/CUVcOWP4.jpg/revision/latest/thumbnail/width/360/height/360?cb=20201009210428&path-prefix=es',
                     boleta: '123456',
                     curp: 'ABCDario',
                     subjects: [
-                      AsignedTeacher(name: 'a', position: 'b', contact: 'c', deparment: 'd', group: 'e', subject: 'f')
+                      AsignedTeacher(id: '8',name: 'a', position: 'b', contact: 'c', deparment: 'd', group: 'e', subject: 'f')
                     ]
                   );
 

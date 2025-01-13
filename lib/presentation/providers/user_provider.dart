@@ -14,6 +14,7 @@ class UserProvider extends ChangeNotifier{
     imageUrl: 'https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
     subjects: [
       AsignedTeacher(
+        id: '1',
         name: 'Maestro Bot', 
         position: 'Profesor', 
         contact: '55123456789', 
@@ -22,6 +23,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'Procesamiento Digital de Señales'
       ),
       AsignedTeacher(
+        id: '2',
         name: 'Maestro 2', 
         position: 'Profesor chafa', 
         contact: '55123456789', 
@@ -30,6 +32,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'Mendigar'
       ),
       AsignedTeacher(
+        id: '3',
         name: 'Pepe', 
         position: 'Arriba', 
         contact: '55123456789', 
@@ -38,6 +41,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'No se sabe'
       ),
       AsignedTeacher(
+        id: '4',
         name: 'Otro maestro más', 
         position: 'maistro', 
         contact: '55123456789', 
@@ -46,6 +50,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'Sistemas en Chip'
       ),
       AsignedTeacher(
+        id: '5',
         name: 'Maestro Bot', 
         position: 'Profesor', 
         contact: '55123456789', 
@@ -54,6 +59,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'Procesamiento Digital de Señales'
       ),
       AsignedTeacher(
+        id: '6',
         name: 'Maestro Bot', 
         position: 'Profesor', 
         contact: '55123456789', 
@@ -62,6 +68,7 @@ class UserProvider extends ChangeNotifier{
         subject: 'Procesamiento Digital de Señales'
       ),
       AsignedTeacher(
+        id: '7',
         name: 'Maestro Bot', 
         position: 'Profesor', 
         contact: '55123456789', 
