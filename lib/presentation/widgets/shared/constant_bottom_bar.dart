@@ -16,67 +16,75 @@ class ConstantBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return BottomAppBar(
-        color: colors.primary,
-        shape: const CircularNotchedRectangle(),
-        child: Row(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 35,
-                  child: IconButton(
-                    icon: Icon(Icons.location_pin,color: colors.onPrimary,),
-                    tooltip: 'Facebook',
-                    onPressed: (){
-                      _launchInBrowser(Uri(scheme: 'https',host: 'www.facebook.com',path: 'escomipnmx/?locale=es_LA'));
-                    },
-                  ),
-                ),
-                Text('Facebook',style: TextStyle(fontSize: 10,color: colors.onPrimary),),
-              ]
+
+    // Helper function to build icon buttons with labels
+    Widget _buildIconButton({
+      required IconData icon,
+      required String tooltip,
+      required String label,
+      required Uri url,
+      required Color color,
+    }) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 35,
+            child: IconButton(
+              icon: Icon(icon, color: color),
+              tooltip: tooltip,
+              onPressed: () => _launchInBrowser(url),
             ),
-
-
-
-
-
-            Column(
-              children: [
-                SizedBox(
-                  height: 35,
-                  child: IconButton(
-                    icon: Icon(Icons.bookmark_outline_rounded,color: colors.onPrimary),
-                    tooltip: 'X',
-                    onPressed: (){
-                      _launchInBrowser(Uri(scheme: 'https',host: 'www.x.com',path: 'escomunidad'));
-                    },
-                  ),
-                ),
-                Text('X',style: TextStyle(fontSize: 10,color: colors.onPrimary),),
-              ]
-            ),
-
-
-
-
-            Column(
-              children: [
-                SizedBox(
-                  height: 35,
-                  child: IconButton(
-                    icon: Icon(Icons.notifications_none,color: colors.onPrimary),
-                    tooltip: 'Instagram',
-                    onPressed: (){
-                      _launchInBrowser(Uri(scheme: 'https',host: 'www.instagram.com',path: 'explore/locations/116138758396662/escom-ipn/'));
-                    },
-                  ),
-                ),
-                Text('Instagram',style: TextStyle(fontSize: 10,color: colors.onPrimary),),
-              ]
-            )
-          ],
-        )
+          ),
+          Text(
+            label,
+            style: TextStyle(fontSize: 10, color: color),
+          ),
+        ],
       );
+    }
+
+    return BottomAppBar(
+      color: colors.primary,
+      shape: const CircularNotchedRectangle(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildIconButton(
+            icon: Icons.facebook,
+            tooltip: 'Facebook',
+            label: 'Facebook',
+            url: Uri(
+              scheme: 'https',
+              host: 'www.facebook.com',
+              path: 'escomipnmx/?locale=es_LA',
+            ),
+            color: colors.onPrimary,
+          ),
+          _buildIconButton(
+            icon: Icons.bookmark_outline_rounded,
+            tooltip: 'X',
+            label: 'X',
+            url: Uri(
+              scheme: 'https',
+              host: 'www.x.com',
+              path: 'escomunidad',
+            ),
+            color: colors.onPrimary,
+          ),
+          _buildIconButton(
+            icon: Icons.notification_add,
+            tooltip: 'Instagram',
+            label: 'Instagram',
+            url: Uri(
+              scheme: 'https',
+              host: 'www.instagram.com',
+              path: 'explore/locations/116138758396662/escom-ipn/',
+            ),
+            color: colors.onPrimary,
+          ),
+        ],
+      ),
+    );
   }
 }

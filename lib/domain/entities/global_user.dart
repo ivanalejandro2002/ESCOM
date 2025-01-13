@@ -7,11 +7,10 @@ class GlobalUser {
   String curp;
   List<AsignedTeacher> subjects;
 
-  GlobalUser({
-    required this.nombre,
-    required this.imageUrl,
-    required this.boleta,
-    required this.curp,
-    required this.subjects
-  });
+  GlobalUser(
+      {required this.nombre,
+      required this.imageUrl,
+      required this.boleta,
+      required this.curp,
+      required this.subjects});
 }

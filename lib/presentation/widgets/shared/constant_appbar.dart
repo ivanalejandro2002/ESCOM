@@ -6,38 +6,37 @@ class ConstantAppbar extends StatelessWidget implements PreferredSizeWidget {
   const ConstantAppbar({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     final userProvider = context.watch<UserProvider>();
     final colors = Theme.of(context).colorScheme;
 
     return AppBar(
         backgroundColor: colors.primary,
-        title: Text('ESCOM',style: TextStyle(color: colors.onPrimary)),
+        title: Text('ESCOM', style: TextStyle(color: colors.onPrimary)),
         centerTitle: true,
         leading: Builder(
-          builder:(context) {
+          builder: (context) {
             return IconButton(
-              icon: Icon(Icons.menu,color:colors.onPrimary),
-              onPressed: (){
+              icon: Icon(Icons.menu, color: colors.onPrimary),
+              onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }, 
+              },
             );
           },
         ),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: CircleAvatar(
-              backgroundColor: colors.onPrimary,
-              backgroundImage: NetworkImage(userProvider.globalUserData.imageUrl),
+            padding: const EdgeInsets.all(2.0),
+            child: IconButton(
+              icon: Icon(Icons.account_circle, color: colors.onPrimary),
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
             ),
           ),
-          
-        ]
-      );
+        ]);
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(60);
 }

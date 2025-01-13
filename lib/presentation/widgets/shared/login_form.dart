@@ -1,112 +1,149 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/domain/entities/global_user.dart';
-import 'package:gestor/domain/entities/teachers.dart';
-import 'package:gestor/presentation/providers/user_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:gestor/presentation/providers/api_provider.dart';
+import 'package:gestor/presentation/screens/my_professors_view.dart';
+import 'package:gestor/presentation/providers/session_manager.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   final ValueChanged<GlobalUser> onValue;
+
   const LoginForm({
     super.key,
     required this.onValue,
   });
 
   @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
+
+  String boleta = '';
+  String curp = '';
+
+  Future<void> _handleLogin() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Procesando Datos...')),
+      );
+
+      try {
+        final successfulLogin = await ApiService.login(boleta, curp);
+        if (successfulLogin) {
+          final sessionManager = SessionManager();
+          sessionManager.saveSession("un token", boleta);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('¡Login exitoso!')),
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MyProfessorsView(),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Credenciales inválidas')),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final userProvider = context.watch<UserProvider>();
-    GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return Form(
       key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(padding: EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-
-              decoration: const InputDecoration(
-                hintText: 'Ingrese número de boleta',
-                labelText: 'Boleta',
-                border: OutlineInputBorder()
-              ),
-
-              validator: (value){
-                if(value== null || value.isEmpty){
-                  return 'Agrega un número de boleta';
-                }
-
-                bool onlyNumbers = RegExp(r'^[0-9]+$').hasMatch(value);
-
-                if(!onlyNumbers){
-                  return 'El número de boleta debe ser numerico';
-                }
-
-                if(value.length != 10){
-                  return 'El número de boleta consta de 10 dígitos';
-                }
-                return null;
-              }
-            ),
-          ),
-
-          const SizedBox(height: 15,),
-
-          Padding(padding: EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-
-              decoration: const InputDecoration(
-                hintText: 'Ingrese su CURP',
-                labelText: 'CURP',
-                border: OutlineInputBorder()
-              ),
-
-              validator: (value){
-                if(value== null || value.isEmpty){
-                  return 'Agrega una CURP';
-                }
-                
-                bool correctCurp = RegExp(r'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$').hasMatch(value);
-                if(!correctCurp){
-                  return 'Coloca una CURP real';
-                }
-                return null;
-              }
-            ),
-          ),
-
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: ElevatedButton(
-              onPressed: (){
-                if(_formKey.currentState!.validate()){
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Procesando Datos'))
-                  );
-                  
-                  //TODO: Agregar la consulta de la base de datos
-
-
-                  //Esta es una interacción de prueba, pero puede basarse para más facilidad
-                  //El objeto de retorno de la base de datos debe convertirse en uno de tipo GlobalUser
-
-                  GlobalUser random = GlobalUser(
-                    nombre: 'Panchito',
-                    imageUrl: 'https://static.wikia.nocookie.net/mamarre-estudios-espanol/images/5/54/CUVcOWP4.jpg/revision/latest/thumbnail/width/360/height/360?cb=20201009210428&path-prefix=es',
-                    boleta: '123456',
-                    curp: 'ABCDario',
-                    subjects: [
-                      AsignedTeacher(name: 'a', position: 'b', contact: 'c', deparment: 'd', group: 'e', subject: 'f')
-                    ]
-                  );
-
-
-                  onValue(random);
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Número de Boleta',
+                hintText: 'Ingrese número de boleta',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                prefixIcon: const Icon(Icons.person),
+              ),
+              onChanged: (value) => boleta = value,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Por favor ingresa tu número de boleta';
                 }
-              }, 
-              child: const Text('Enviar'),
+                if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                  return 'La boleta debe contener solo números';
+                }
+                /*if (value.length != 10) {
+                  return 'La boleta debe tener exactamente 10 dígitos';
+                }*/
+                return null;
+              },
             ),
           ),
-
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: TextFormField(
+              decoration: InputDecoration(
+                labelText: 'CURP',
+                hintText: 'Ingrese su CURP',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                prefixIcon: const Icon(Icons.lock),
+              ),
+              onChanged: (value) => curp = value,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Por favor ingresa tu CURP';
+                }
+                /*if (!RegExp(
+                        r'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$')
+                    .hasMatch(value)) {
+                  return 'Por favor ingresa un CURP válido';
+                }*/
+                return null;
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: _isLoading ? null : _handleLogin,
+              child: _isLoading
+                  ? const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    )
+                  : const Text(
+                      'Iniciar Sesión',
+                      style: TextStyle(fontSize: 18),
+                    ),
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
 }
