@@ -14,17 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider())
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => UserProvider())],
       child: MaterialApp(
-        title: 'ESCOM',
-      
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme(selectedColor: 6).theme(),
-      
-        home: MyProfessorsView()
-      ),
+          title: 'ESCOM',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme(selectedColor: 6).theme(),
+          home: MyProfessorsView()),
     );
   }
 }
