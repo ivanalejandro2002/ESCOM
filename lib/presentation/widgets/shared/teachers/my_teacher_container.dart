@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/domain/entities/teachers.dart';
+import 'package:gestor/presentation/screens/teacher_info.dart';
 
 class MyTeacherContainer extends StatelessWidget {
-  final AsignedTeacher teacherData;
-  const MyTeacherContainer({
-    super.key,
-    required this.teacherData
-  });
+  final AssignedTeacher teacherData;
+  const MyTeacherContainer({super.key, required this.teacherData});
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +13,38 @@ class MyTeacherContainer extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: (){
-            //TODO: LLamar a la pantalla del maestro
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TeacherInfo(
+                        teacherId: teacherData.teacherID,
+                        firstName: teacherData.firstName, // Nombre del profesor
+                        academyName: teacherData.academyName, // Academia
+                        curp: teacherData.curp)));
           },
           child: Container(
-            decoration: BoxDecoration(
-              color: colors.primary,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            height: 75,
-            width: (dimentions.width-10),
-            
-            child: Column(
-              children: [
-                Text(teacherData.name,style: TextStyle(color: colors.onPrimary, fontSize: 20)),
-                Text('Cargo: ${teacherData.position}', style: TextStyle(color: colors.onPrimary, fontSize: 15,)),
-                Text('Contacto: ${teacherData.contact}', style: TextStyle(color: colors.onPrimary, fontSize: 15)),
-              ],
-            )
-          ),
+              decoration: BoxDecoration(
+                color: colors.primary,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              height: 75,
+              width: (dimentions.width - 10),
+              child: Column(
+                children: [
+                  Text(teacherData.firstName,
+                      style: TextStyle(color: colors.onPrimary, fontSize: 20)),
+                  Text('Cargo: ${teacherData.academyName}',
+                      style: TextStyle(
+                        color: colors.onPrimary,
+                        fontSize: 15,
+                      ))
+                ],
+              )),
         ),
-        SizedBox(height: 3,),
+        SizedBox(
+          height: 3,
+        ),
       ],
     );
   }

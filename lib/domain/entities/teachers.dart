@@ -1,37 +1,83 @@
-class Teachers {
-  String name;
-  String position;
-  String contact;
-  String deparment;
-  String id;
-  String office;
-  String myImage;
+class Teacher {
+  String teacherID;
+  String firstName;
+  String lastName;
+  String curp;
+  String academyName;
 
-  Teachers(
-      {required this.id,
-      required this.name,
-      required this.position,
-      required this.contact,
-      required this.deparment,
-      required this.office,
-      required this.myImage});
+  Teacher({
+    required this.teacherID,
+    required this.firstName,
+    required this.lastName,
+    required this.curp,
+    required this.academyName,
+  });
+
+  // Método para convertir JSON en un objeto Teacher
+  factory Teacher.fromJson(Map<String, dynamic> json) {
+    return Teacher(
+      teacherID: json['TeacherID'],
+      firstName: json['FirstName'],
+      lastName: json['LastName'],
+      curp: json['CURP'],
+      academyName: json['AcademyName'],
+    );
+  }
+
+  // Método para convertir un objeto Teacher a JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'TeacherID': teacherID,
+      'FirstName': firstName,
+      'LastName': lastName,
+      'CURP': curp,
+      'AcademyName': academyName,
+    };
+  }
 }
 
-class AsignedTeacher {
-  String id;
-  String name;
-  String position;
-  String contact;
-  String deparment;
+class AssignedTeacher {
+  String teacherID;
+  String firstName;
+  String lastName;
+  String curp;
+  String academyName;
   String group;
   String subject;
 
-  AsignedTeacher(
-      {required this.id,
-      required this.name,
-      required this.position,
-      required this.contact,
-      required this.deparment,
-      required this.group,
-      required this.subject});
+  AssignedTeacher({
+    required this.teacherID,
+    required this.firstName,
+    required this.lastName,
+    required this.curp,
+    required this.academyName,
+    required this.group,
+    required this.subject,
+  });
+
+  // Método para convertir JSON en un objeto AssignedTeacher
+  factory AssignedTeacher.fromJson(Map<String, dynamic> json) {
+    return AssignedTeacher(
+      teacherID: json['TeacherID'].toString(),
+      firstName: json['FirstName'],
+      lastName: json['LastName'],
+      curp: json['CURP'],
+      academyName: json['AcademyName'],
+      group: json['GroupCode'],
+      subject: json['Subject'],
+    );
+  }
+
+  // Método para convertir un objeto AssignedTeacher a JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'TeacherID': teacherID,
+      'FirstName': firstName,
+      'LastName': lastName,
+      'CURP': curp,
+      'AcademyName': academyName,
+      'Group': group,
+      'Subject': subject,
+    };
+  }
 }

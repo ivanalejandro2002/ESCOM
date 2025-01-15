@@ -13,26 +13,25 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final chatProvider = context.watch<UserProvider>();
-    
+
     return Scaffold(
       //Barra principal superior
       appBar: ConstantAppbar(),
 
-
       body: ListView(
         children: [
           CarouselPhotos(),
-
-          const DialogBox(title: 'Hola', description: 'Do excepteur officia cupidatat consequat duis eu id aute commodo. Eiusmod elit ullamco consequat quis reprehenderit laboris aliquip nostrud anim aliqua. Consectetur ipsum incididunt sint qui duis laboris ullamco commodo. Et nulla non non reprehenderit. Dolore deserunt sit consequat veniam non. Eiusmod ut laborum id ut fugiat laboris occaecat dolor.'),
-
+          const DialogBox(
+              title: 'Bienvenido',
+              description:
+                  'La ESCOM te ofrece una educación de calidad en las áreas de sistemas computacionales, inteligencia artificial y ciencia de datos. Prepárate para enfrentar los desafíos del futuro y desarrollar soluciones tecnológicas que impacten positivamente a la sociedad.'),
           const SizedBox(height: 10),
           CareerGrid()
         ],
       ),
 
-      drawer: DrawerMenu(), 
+      drawer: DrawerMenu(),
 
       bottomNavigationBar: ConstantBottomBar(),
     );

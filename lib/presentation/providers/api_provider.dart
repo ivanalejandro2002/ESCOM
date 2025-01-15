@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiService {
-  static const String baseUrl = 'http://192.168.0.10:3000';
+  static const String baseUrl = 'http://192.168.43.162:3000';
 
   static Future<bool> login(String boleta, String curp) async {
     final url = Uri.parse('$baseUrl/login');
@@ -33,7 +33,7 @@ class ApiService {
     }
   }
 
-  static Future<List<dynamic>> getTeachers() async {
+  static Future<List<AssignedTeacher>> getTeachers() async {
     final session = SessionManager();
     var obj = await session.getSession();
     try {
@@ -42,14 +42,41 @@ class ApiService {
       print("Código de estado: ${response.statusCode}");
       print("Cuerpo de la respuesta: ${response.body}");
       if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        return data;
+        final responseBody = json.decode(response.body);
+        final List<dynamic> teachersJson = responseBody['teachers_list'];
+        return teachersJson
+            .map((teacher) => AssignedTeacher.fromJson(teacher))
+            .toList();
       } else {
         throw Exception('Error al obtener maestros: ${response.statusCode}');
       }
     } catch (e) {
       print(e);
       throw Exception('Error en la solictud ${e}');
+    }
+  }
+
+  static Future<Teacher> getTeacherById(String teacherId) async {
+    final response = await http.get(Uri.parse('$baseUrl/teachers/$teacherId'));
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return Teacher.fromJson(
+          data); // Implementa el método fromJson en la clase Teacher
+    } else {
+      throw Exception('Error al obtener los datos del profesor');
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getScheduleByTeacherId(
+      String teacherId) async {
+    final response = await http.get(Uri.parse('$baseUrl/teacher/$teacherId'));
+    print(response.body);
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return List<Map<String, dynamic>>.from(data['schedule']);
+    } else {
+      throw Exception('Error al obtener el horario del profesor');
     }
   }
 }
