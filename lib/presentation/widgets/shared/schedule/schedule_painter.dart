@@ -12,7 +12,6 @@ class DivisionsInColorPallete {
   });
 }
 
-
 class SchedulePainter extends CustomPainter {
   final List<Map<String, dynamic>> schedule;
   final double width;
@@ -23,9 +22,8 @@ class SchedulePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-
     final textHeight = (height / 5 - 10) / 3 - 5;
-    
+
     final textStyleOutside = TextStyle(
         color: Colors.black, fontSize: textHeight, fontWeight: FontWeight.w600);
 
@@ -46,7 +44,7 @@ class SchedulePainter extends CustomPainter {
 
     // Impresión de los días de la semana
 
-    for(int i = 0; i < daysOfWeek.length; i++){
+    for (int i = 0; i < daysOfWeek.length; i++) {
       textPainter.text = TextSpan(
         text: daysOfWeek[i],
         style: textStyleOutside,
@@ -54,23 +52,23 @@ class SchedulePainter extends CustomPainter {
       textPainter.layout(minWidth: 0, maxWidth: 150);
       textPainter.paint(
           canvas,
-          Offset(5,
-              textHeight + 10 +
-              i * (height - (textHeight + 10)) / 5 +
-              (height / 5 - 10 - textHeight) / 2
-          )
-      );
+          Offset(
+              5,
+              textHeight +
+                  10 +
+                  i * (height - (textHeight + 10)) / 5 +
+                  (height / 5 - 10 - textHeight) / 2));
     }
 
     textPainter.layout(minWidth: 0, maxWidth: 150);
     textPainter.paint(
-      canvas,
-      Offset(5,
-          textHeight +
-              10 + 4 * (height - (textHeight + 10)) / 5 +
-              (height / 5 - 10 - textHeight) / 2
-      )
-    );
+        canvas,
+        Offset(
+            5,
+            textHeight +
+                10 +
+                4 * (height - (textHeight + 10)) / 5 +
+                (height / 5 - 10 - textHeight) / 2));
 
     for (int i = 0; i < horariosClases.length; i++) {
       textPainter.text = TextSpan(
