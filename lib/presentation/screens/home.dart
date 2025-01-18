@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/presentation/providers/user_provider.dart';
-import 'package:gestor/presentation/widgets/shared/career_grid.dart';
+import 'package:gestor/presentation/widgets/career_grid.dart';
 import 'package:gestor/presentation/widgets/shared/carousel_photos.dart';
 import 'package:gestor/presentation/widgets/shared/constant_appbar.dart';
 import 'package:gestor/presentation/widgets/shared/constant_bottom_bar.dart';
 import 'package:gestor/presentation/widgets/shared/dialog_box.dart';
-import 'package:gestor/presentation/widgets/shared/drawer_menu.dart';
+import 'package:gestor/presentation/widgets/drawer_menu.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {

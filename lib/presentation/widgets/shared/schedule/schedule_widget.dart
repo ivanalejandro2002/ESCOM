@@ -4,12 +4,9 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:gestor/domain/entities/teachers.dart';
-import 'package:gestor/presentation/providers/api_provider.dart';
 import 'package:gestor/presentation/widgets/shared/constant_appbar.dart';
 import 'package:gestor/presentation/widgets/shared/constant_bottom_bar.dart';
-import 'package:gestor/presentation/widgets/shared/drawer_menu.dart';
+import 'package:gestor/presentation/widgets/drawer_menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:gestor/domain/testconstants/test_schedule.dart';
 import 'package:gestor/presentation/widgets/shared/schedule/schedule_painter.dart';

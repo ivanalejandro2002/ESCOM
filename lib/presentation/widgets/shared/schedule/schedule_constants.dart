@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:gestor/presentation/screens/teacher_info.dart';
 import 'package:gestor/presentation/widgets/shared/schedule/schedule_painter.dart';
 
 const startHours = {
@@ -16,7 +13,7 @@ const startHours = {
   "20:00": 8
 };
 
-const  List<String> horariosClases = [
+const List<String> horariosClases = [
   "7:00 - 8:30",
   "8:30 - 10:00",
   "10:30 - 12:00",
@@ -29,22 +26,20 @@ const  List<String> horariosClases = [
 ];
 
 final List<DivisionsInColorPallete> colorPalletes = [
-  DivisionsInColorPallete(
-      background: Color(0xFF1E1E24), font: Colors.white),
-  DivisionsInColorPallete(
-      background: Color(0xFF92140C), font: Colors.white),
-  DivisionsInColorPallete(
-      background: Color(0xFFAFD2E9), font: Colors.black),
-  DivisionsInColorPallete(
-      background: Color(0xFFFFCF99), font: Colors.black),
-  DivisionsInColorPallete(
-      background: Color(0xFF111D4A), font: Colors.white),
-  DivisionsInColorPallete(
-      background: Color(0xFF839788), font: Colors.white),
-  DivisionsInColorPallete(
-      background: Color(0xFF0081A7), font: Colors.white),
-  DivisionsInColorPallete(
-      background: Color(0xFFC589E8), font: Colors.black),
+  DivisionsInColorPallete(background: Color(0xFF1E1E24), font: Colors.white),
+  DivisionsInColorPallete(background: Color(0xFF92140C), font: Colors.white),
+  DivisionsInColorPallete(background: Color(0xFFAFD2E9), font: Colors.black),
+  DivisionsInColorPallete(background: Color(0xFFFFCF99), font: Colors.black),
+  DivisionsInColorPallete(background: Color(0xFF111D4A), font: Colors.white),
+  DivisionsInColorPallete(background: Color(0xFF839788), font: Colors.white),
+  DivisionsInColorPallete(background: Color(0xFF0081A7), font: Colors.white),
+  DivisionsInColorPallete(background: Color(0xFFC589E8), font: Colors.black),
 ];
 
-final List<String> daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+final List<String> daysOfWeek = [
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes"
+];

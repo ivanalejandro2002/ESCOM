@@ -1,6 +1,6 @@
 import 'package:gestor/domain/entities/global_user.dart';
 import 'package:gestor/domain/entities/teachers.dart';
-import 'package:gestor/presentation/providers/session_manager.dart';
+import 'package:gestor/services/session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -52,7 +52,7 @@ class ApiService {
       }
     } catch (e) {
       print(e);
-      throw Exception('Error en la solictud ${e}');
+      throw Exception('Error en la solictud $e');
     }
   }
 

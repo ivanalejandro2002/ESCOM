@@ -3,8 +3,8 @@ import 'package:gestor/config/theme/app_theme.dart';
 import 'package:gestor/domain/entities/teachers.dart';
 import 'package:gestor/presentation/providers/user_provider.dart';
 import 'package:gestor/presentation/screens/login_page.dart';
-import 'package:gestor/presentation/screens/main_page.dart';
-import 'package:gestor/presentation/screens/my_professors_view.dart';
+import 'package:gestor/presentation/screens/home.dart';
+import 'package:gestor/presentation/screens/teachers_list.dart';
 import 'package:gestor/presentation/screens/teacher_info.dart';
 import 'package:provider/provider.dart';
 
@@ -23,16 +23,11 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
             title: 'ESCOM',
             debugShowCheckedModeBanner: false,
-            theme: AppTheme(selectedColor: 6).theme(),
+            theme: AppTheme(selectedColor: 0).theme(),
             routes: {
               '/login': (context) => const LoginPage(),
-              '/my_professors': (context) => const MyProfessorsView(),
+              '/my_professors': (context) => const TeachersList(),
             },
-            home: TeacherInfo(
-              academyName: "Papas",
-              curp: "Miaustigmatismo",
-              firstName: "Pepe",
-              teacherId: "ID = XD",
-            )));
+            home: const TeachersList()));
   }
 }

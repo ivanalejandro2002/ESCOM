@@ -18,7 +18,7 @@ class ConstantBottomBar extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     // Helper function to build icon buttons with labels
-    Widget _buildIconButton({
+    Widget buildIconButton({
       required IconData icon,
       required String tooltip,
       required String label,
@@ -50,7 +50,7 @@ class ConstantBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildIconButton(
+          buildIconButton(
             icon: Icons.facebook,
             tooltip: 'Facebook',
             label: 'Facebook',
@@ -61,7 +61,7 @@ class ConstantBottomBar extends StatelessWidget {
             ),
             color: colors.onPrimary,
           ),
-          _buildIconButton(
+          buildIconButton(
             icon: Icons.bookmark_outline_rounded,
             tooltip: 'X',
             label: 'X',
@@ -72,7 +72,7 @@ class ConstantBottomBar extends StatelessWidget {
             ),
             color: colors.onPrimary,
           ),
-          _buildIconButton(
+          buildIconButton(
             icon: Icons.notification_add,
             tooltip: 'Instagram',
             label: 'Instagram',

@@ -80,7 +80,7 @@ class SchedulePainter extends CustomPainter {
     }
     //--------------------------------------------------------------------------------------------------------------------------------
 
-    Map<String, int> usedSubjects = new Map<String, int>();
+    Map<String, int> usedSubjects = <String, int>{};
     int currentAdding = 0;
     for (var item in schedule) {
       if (usedSubjects.containsKey(item["UnitName"]) == false) {
@@ -108,7 +108,7 @@ class SchedulePainter extends CustomPainter {
       // Draw text
       textPainter.text = TextSpan(
         text:
-            '${item["GroupCode"]} - ${item["UnitName"]} (Salón ${item["Classroom"]})\nHorario: ${startTime} - ${endTime}',
+            '${item["GroupCode"]} - ${item["UnitName"]} (Salón ${item["Classroom"]})\nHorario: $startTime - $endTime',
         style: TextStyle(
             color: colorPalletes[(usedSubjects[item["UnitName"]] ?? 7)].font,
             fontSize: textHeight),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestor/domain/entities/global_user.dart';
-import 'package:gestor/presentation/providers/api_provider.dart';
-import 'package:gestor/presentation/screens/my_professors_view.dart';
-import 'package:gestor/presentation/providers/session_manager.dart';
+import 'package:gestor/services/api_service.dart';
+import 'package:gestor/presentation/screens/teachers_list.dart';
+import 'package:gestor/services/session_manager.dart';
 
 class LoginForm extends StatefulWidget {
   final ValueChanged<GlobalUser> onValue;
@@ -44,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const MyProfessorsView(),
+              builder: (context) => const TeachersList(),
             ),
           );
         } else {
