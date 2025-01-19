@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     final userProvider = context.watch<UserProvider>();
     return Scaffold(
       appBar: ConstantAppbar(),
@@ -20,7 +21,7 @@ class LoginPage extends StatelessWidget {
         children: [
           Center(
               child: Text('ESCOMUNIDAD',
-                  style: const TextStyle(color: Colors.blue, fontSize: 30))),
+                  style: TextStyle(color: colors.tertiaryFixed, fontSize: 30))),
           LoginForm(
             onValue: (value) => userProvider.newLogin(value),
           ),

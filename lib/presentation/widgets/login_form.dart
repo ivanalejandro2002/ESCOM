@@ -66,6 +66,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Form(
       key: _formKey,
       child: Column(
@@ -130,15 +131,16 @@ class _LoginFormState extends State<LoginForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
+                backgroundColor: colors.primary,
               ),
               onPressed: _isLoading ? null : _handleLogin,
               child: _isLoading
-                  ? const CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ? CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(colors.tertiary),
                     )
-                  : const Text(
+                  : Text(
                       'Iniciar Sesión',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 18,color: colors.surface),
                     ),
             ),
           ),

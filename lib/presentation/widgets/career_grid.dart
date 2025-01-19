@@ -34,12 +34,13 @@ class CareerGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Column(
       children: [
         Text(
           'Oferta Educativa',
-          style: const TextStyle(
-            color: Colors.blue,
+          style: TextStyle(
+            color: colors.tertiaryFixed,
             fontSize: 30,
           ),
         ),

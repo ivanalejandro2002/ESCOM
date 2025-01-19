@@ -28,6 +28,7 @@ class _TeachersListState extends State<TeachersList> {
   Widget build(BuildContext context) {
     //final userProvider = context.watch<UserProvider>();
     final GlobalUser userProvider = test_user_data;
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: ConstantAppbar(),
       drawer: const DrawerMenu(),
@@ -60,7 +61,7 @@ class _TeachersListState extends State<TeachersList> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 16, horizontal: 16),
-                      color: Colors.blueAccent,
+                      color: colors.tertiaryFixed,
                       child: const Text(
                         'Directorio de Profesores',
                         style: TextStyle(
@@ -82,6 +83,7 @@ class _TeachersListState extends State<TeachersList> {
                                 horizontal: 8, vertical: 4),
                             child: ListTile(
                               leading: CircleAvatar(
+                                backgroundColor: colors.secondary,
                                 child: Text(teacher.firstName[0]),
                               ),
                               title: Text(teacher.firstName),
@@ -123,8 +125,9 @@ class _TeachersListState extends State<TeachersList> {
                             ),
                           );
                         },
-                        separatorBuilder: (context, index) => const Divider(
-                          thickness: 1,
+                        separatorBuilder: (context, index) => Divider(
+                          color: colors.tertiary,
+                          thickness: 2,
                           height: 1,
                         ),
                       ),

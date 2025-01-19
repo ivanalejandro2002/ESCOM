@@ -11,20 +11,21 @@ class DialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
           Text(title,
-            style: const TextStyle(
-              color: Colors.blue,
+            style: TextStyle(
+              color: colors.tertiaryFixed,
               fontSize: 30,
             ),
           ),
           
           Text(description,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: colors.onSurface,
               fontSize: 15,
             ),
           )

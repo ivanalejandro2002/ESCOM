@@ -122,8 +122,9 @@ class _TeacherInfoState extends State<TeacherInfo> {
         ),
       );
     }
-
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
+      
       appBar: ConstantAppbar(),
       drawer: DrawerMenu(),
       body: Column(
@@ -137,7 +138,7 @@ class _TeacherInfoState extends State<TeacherInfo> {
           Text(
             widget.firstName,
             style: TextStyle(
-                color: Colors.blue, fontSize: 30, fontWeight: FontWeight.w700),
+                color: colors.tertiaryFixed, fontSize: 30, fontWeight: FontWeight.w700),
           ),
           Text('Academia (Sala): ${widget.academyName}'),
           Text('CURP: ${widget.curp}'),
