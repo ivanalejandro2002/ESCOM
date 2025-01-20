@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/mau/Documentos/Escuela/2024-2/Moviles/DESCRUBRE/ESCOM/windows"
+    "cmake.sourceDirectory": "/home/mau/Documentos/Escuela/2024-2/Moviles/DESCRUBRE/ESCOM/windows",
+    "cmake.ignoreCMakeListsMissing": true
 }

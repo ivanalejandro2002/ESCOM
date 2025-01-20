@@ -28,6 +28,7 @@ class DialogBox extends StatelessWidget {
               color: colors.onSurface,
               fontSize: 15,
             ),
+            textAlign: TextAlign.justify,
           )
         ],
       ),
