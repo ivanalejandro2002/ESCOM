@@ -98,6 +98,8 @@ class _TeacherInfoState extends State<TeacherInfo> {
   @override
   Widget build(BuildContext context) {
     Size dimentions = MediaQuery.sizeOf(context);
+    final double blockWidth = dimentions.width/3;
+    final double textStart = (blockWidth*2)/3;
 
     if (isLoading) {
       return const Scaffold(
@@ -152,7 +154,9 @@ class _TeacherInfoState extends State<TeacherInfo> {
                 size: Size(2400, dimentions.height - 540),
                 painter: SchedulePainter(
                     schedule: schedule ?? [],
-                    width: 2400,
+                    width: (9*blockWidth + textStart),
+                    blockWidth: blockWidth,
+                    textstartSpace: textStart,
                     height: dimentions.height - 540),
               ),
             ),

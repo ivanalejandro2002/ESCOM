@@ -15,10 +15,12 @@ class DivisionsInColorPallete {
 class SchedulePainter extends CustomPainter {
   final List<Map<String, dynamic>> schedule;
   final double width;
+  final double blockWidth;
+  final double textstartSpace;
   final double height;
 
   SchedulePainter(
-      {required this.schedule, required this.width, required this.height});
+      {required this.schedule, required this.width, required this.blockWidth, required this.textstartSpace, required this.height});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -49,7 +51,7 @@ class SchedulePainter extends CustomPainter {
         text: daysOfWeek[i],
         style: textStyleOutside,
       );
-      textPainter.layout(minWidth: 0, maxWidth: 150);
+      textPainter.layout(minWidth: 0, maxWidth: textstartSpace);
       textPainter.paint(
           canvas,
           Offset(
@@ -60,7 +62,7 @@ class SchedulePainter extends CustomPainter {
                   (height / 5 - 10 - textHeight) / 2));
     }
 
-    textPainter.layout(minWidth: 0, maxWidth: 150);
+    textPainter.layout(minWidth: 0, maxWidth: textstartSpace);
     textPainter.paint(
         canvas,
         Offset(
@@ -75,8 +77,8 @@ class SchedulePainter extends CustomPainter {
         text: horariosClases[i],
         style: textStyleOutside,
       );
-      textPainter.layout(minWidth: 0, maxWidth: (width - 150) / 9);
-      textPainter.paint(canvas, Offset(150 + i * (width - 150) / 9, 5));
+      textPainter.layout(minWidth: 0, maxWidth: blockWidth);
+      textPainter.paint(canvas, Offset(textstartSpace + i * blockWidth, 5));
     }
     //--------------------------------------------------------------------------------------------------------------------------------
 
@@ -92,9 +94,9 @@ class SchedulePainter extends CustomPainter {
       final startTime = item["StartTime"];
       final endTime = item["EndTime"];
 
-      final startX = 150 + (width - 150) / 9 * (startHours[startTime] ?? 0);
+      final startX = textstartSpace + blockWidth * (startHours[startTime] ?? 0);
       final endX =
-          150 + (width - 150) / 9 * ((startHours[startTime] ?? 0) + 1) - 5;
+          textstartSpace + blockWidth * ((startHours[startTime] ?? 0) + 1) - 5;
       final y = dayPositions[day] ?? 0.0;
 
       // Draw rectangle

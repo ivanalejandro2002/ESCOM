@@ -37,6 +37,6 @@ class MyApp extends StatelessWidget {
               '/login': (context) => const LoginPage(),
               '/my_professors': (context) => const TeachersList(),
             },
-            home: const UbicationScreen()));
+            home: const TeacherInfo(academyName: "ASFASD",curp: "JKJK",firstName: "HIK",teacherId: "JI",)));
   }
 }

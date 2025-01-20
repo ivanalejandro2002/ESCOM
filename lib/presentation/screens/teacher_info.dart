@@ -123,6 +123,9 @@ class _TeacherInfoState extends State<TeacherInfo> {
       );
     }
     final colors = Theme.of(context).colorScheme;
+
+    final double blockWidth = dimentions.width/1.5;
+    final double textStart = (blockWidth)/3;
     return Scaffold(
       
       appBar: ConstantAppbar(),
@@ -154,10 +157,12 @@ class _TeacherInfoState extends State<TeacherInfo> {
             child: RepaintBoundary(
               key: _globalKey,
               child: CustomPaint(
-                size: Size(2400, dimentions.height - 540),
+                size: Size((9*blockWidth + textStart), dimentions.height - 540),
                 painter: SchedulePainter(
                     schedule: schedule ?? [],
-                    width: 2400,
+                    width: (9*blockWidth + textStart),
+                    blockWidth: blockWidth,
+                    textstartSpace: textStart,
                     height: dimentions.height - 540),
               ),
             ),
