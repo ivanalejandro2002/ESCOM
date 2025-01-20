@@ -151,7 +151,7 @@ class _TeacherInfoState extends State<TeacherInfo> {
             child: RepaintBoundary(
               key: _globalKey,
               child: CustomPaint(
-                size: Size(2400, dimentions.height - 540),
+                size: Size((9*blockWidth + textStart), dimentions.height - 540),
                 painter: SchedulePainter(
                     schedule: schedule ?? [],
                     width: (9*blockWidth + textStart),

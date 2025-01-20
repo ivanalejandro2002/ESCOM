@@ -3,6 +3,7 @@ import 'package:gestor/presentation/widgets/drawer_menu.dart';
 import 'package:gestor/presentation/widgets/shared/constant_appbar.dart';
 import 'package:gestor/presentation/widgets/shared/constant_bottom_bar.dart';
 import 'package:gestor/presentation/widgets/shared/dialog_box.dart';
+import 'package:gestor/presentation/widgets/shared/download_pdf_button.dart';
 
 class IaPage extends StatelessWidget {
   const IaPage({super.key});
@@ -75,56 +76,10 @@ class IaPage extends StatelessWidget {
 
                 //TODO: Agregar los botones de descarga
                 SizedBox(height: 10,),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        
-                      },
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15), 
-                          color: colors.secondary
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.download,color: colors.onSecondary,),
-                            Text('Mapa Curricular',style: TextStyle(color: colors.onSecondary,fontSize: 20)),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
+                
+                DownloadPdfButton(name: "https://drive.google.com/file/d/13CUAmQXf7v0V5pqzWKgUFHbDp_jMOoiQ/view?usp=sharing", career: "IA", buttonText: "Mapa Curricular",header: "mapa_curricular_"),
                 SizedBox(height: 10,),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-
-                      },
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15), 
-                          color: colors.secondary
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.download,color: colors.onSecondary,),
-                            Text('UA Optativas',style: TextStyle(color: colors.onSecondary,fontSize: 20)),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
-
+                DownloadPdfButton(name: "https://drive.google.com/file/d/1o9FM5N0OFd_mrFJkJ-geMdZW6UaOsY6D/view?usp=sharing", career: "IA", buttonText: "UA Optativas",header: "optativas_"),
 
                 SizedBox(height: 10),
                 DialogBox(title: "Titulación", description: "En la Escuela Superior de Cómputo, de conformidad con el Reglamento de Titulación Profesional vigente se considerarán 9 opciones para titulación profesional en la carrera de Ing. en Sistemas Computacionales (ISC), Ing. en Inteligencia Artificial (IIA), Lic. en Ciencia de Datos (LCD) e Ing. en Sistemas Automotrices (ISISA), debiendo cumplir cada una de ellas con requisitos y actividades propios:\n\n1.Proyecto de investigación\n2.Tesis\n3.Memoria de experiencia profesional\n4.Examen de conocimiento por áreas\n5.Créditos de posgrado\n6.Seminario de titulación\n7.Escolaridad\n8.Curricular\n9.Práctica profesional"),

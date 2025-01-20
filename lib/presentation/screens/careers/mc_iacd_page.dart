@@ -3,6 +3,7 @@ import 'package:gestor/presentation/widgets/drawer_menu.dart';
 import 'package:gestor/presentation/widgets/shared/constant_appbar.dart';
 import 'package:gestor/presentation/widgets/shared/constant_bottom_bar.dart';
 import 'package:gestor/presentation/widgets/shared/dialog_box.dart';
+import 'package:gestor/presentation/widgets/shared/download_pdf_button.dart';
 
 class McIacdPage extends StatelessWidget {
   const McIacdPage({super.key});
@@ -72,55 +73,10 @@ class McIacdPage extends StatelessWidget {
 
                 //TODO: Agregar los botones de descarga
                 SizedBox(height: 10,),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        
-                      },
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15), 
-                          color: colors.secondary
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.download,color: colors.onSecondary,),
-                            Text('Mapa Curricular',style: TextStyle(color: colors.onSecondary,fontSize: 20)),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
+                
+                DownloadPdfButton(name: "https://drive.google.com/file/d/1CRuEk1qdmUYKPdQJld86wzwnwxTCvrV2/view?usp=sharing", career: "MCIACD", buttonText: "Mapa Curricular",header: "mapa_curricular_"),
+                
                 SizedBox(height: 10,),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-
-                      },
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15), 
-                          color: colors.secondary
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.download,color: colors.onSecondary,),
-                            Text('UA Optativas',style: TextStyle(color: colors.onSecondary,fontSize: 20)),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
 
               ],
             ),
